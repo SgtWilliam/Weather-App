@@ -1,11 +1,15 @@
 import React from 'react'
 
-function Home_page() {
+function HomePage() {
     return (
       <div>
+          <h1>Mama</h1>
+          <h1>Mama</h1>
+          <h1>Mama</h1>
+          <h1>Mama</h1>
           <h1>Mama</h1>
       </div>
     );
 }
 
-export default Home_page();
+export default HomePage();
