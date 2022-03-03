@@ -1,0 +1,32 @@
+.FormCss {
+    display:flex;
+    background: white;
+    margin-left: -500px;
+    margin-right: 450px;
+    margin-top: 40px;
+    border-radius: 30px;
+    width: 200%;
+    align-items: center;
+}
+
+.bt-01 {
+    display: table-column;
+    left:100%;
+    align: center;
+    position: relative;
+    top: 10px;
+    background-color: #8820dd;
+}
+
+.lb-01 {
+    color: black;
+    display: flex;
+    position: relative;
+    left: 15%;
+    font-size: 20px;
+}
+
+.imp-01 {
+    position:relative;
+    left:25%;
+}

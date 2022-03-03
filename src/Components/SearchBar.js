@@ -8,16 +8,24 @@ import {
     Label,
     FormText,
 } from 'reactstrap';
-import axios from "axios";
+import './SearchScript'
+import {GetUserCiy} from "./SearchScript";
+import './SearchBar.css'
 
 
 
 function SearchBar() {
+
+    function boxC() {
+        return <p>Me mama</p>
+    }
+
+
     return(
         <div>
             <Form className={"FormCss"}>
                 <FormGroup>
-                    <Label for="nome">Cidade</Label>
+                    <Label className={"lb-01"} for="nome">Cidade</Label>
                     <Input
                         style={{
                             background: 'white',
@@ -26,48 +34,15 @@ function SearchBar() {
                         id="input-city"
                         type="message"
                         placeholder="Brasilia"
+                        className={"imp-01"}
                     />
-                    <FormText className={"FormText"}>Digite o nome de alguma Cidade</FormText>
-                    <Button onClick={GetUserCiy}>Submit</Button>
+                    <Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
                 </FormGroup>
             </Form>
+            <div className="div-02"></div>
         </div>
     );
 }
-
-export function GetUserCiy() {
-    let information = document.getElementById("input-city").value;
-    if(information) {
-
-        async function idQuery() {
-
-            const API_KEY = "UDbfVDhLCwO5iPDrK8KqXdW6KSmUxvaf";
-            const UserInput = information;
-            let res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${UserInput}`);
-
-            let inform = res.data[0].Key
-
-
-            let response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${inform}?apikey=${API_KEY}`);
-
-            let fullData = response.data;
-            let localTemperature = response.data[0].Temperature.Metric.Value
-            let isDayTime = response.data[0].IsDayTime
-            let dateTime = response.data[0].LocalObservationDateTime
-            let icon = response.data[0].WeatherIcon
-
-            console.log(fullData)
-            console.log(localTemperature)
-            console.log(isDayTime)
-            console.log(dateTime)
-            console.log(icon)
-
-        };
-        idQuery();
-
-    }
-
-};
 
 
 
