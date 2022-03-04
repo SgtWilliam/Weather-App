@@ -1,7 +1,7 @@
 import axios from "axios";
 import './SearchBar'
 
-export function GetUserCiy() {
+export function GetUserCity() {
     let information = document.getElementById("input-city").value;
     if (information) {
 

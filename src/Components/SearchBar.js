@@ -8,7 +8,7 @@ import {
     Label,
 } from 'reactstrap';
 import './SearchScript'
-import {GetUserCiy} from "./SearchScript";
+import {GetUserCity} from "./SearchScript";
 
 function SearchBar() {
 
@@ -27,7 +27,7 @@ function SearchBar() {
                         placeholder="Ex: Fortaleza, Sao Paulo"
                         className={"imp-01"}
                     />
-                    <Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
+                    <Button className={"bt-01"} onClick={GetUserCity}>Submit</Button>
                 </FormGroup>
             </Form>
         </div>
