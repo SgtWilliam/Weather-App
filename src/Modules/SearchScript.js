@@ -1,5 +1,5 @@
 import axios from "axios";
-import './SearchBar'
+import '../Components/BoxInput/BoxInput'
 
 export function GetUserCiy(localTemperature, isDayTime, dateTime, icon) {
     let information = document.getElementById("input-city").value;
@@ -35,6 +35,5 @@ export function GetUserCiy(localTemperature, isDayTime, dateTime, icon) {
         idQuery();
     }
 };
-
 
 

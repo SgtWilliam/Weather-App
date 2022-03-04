@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Button,
@@ -8,18 +8,18 @@ import {
     Label,
     FormText,
 } from 'reactstrap';
-import './SearchScript'
-import {GetUserCiy} from "./SearchScript";
-import './SearchBar.css'
+import './Style.css';
+import '../../Modules/SearchScript'
+import {GetUserCity} from "../../Modules/SearchScript";
+// import {handleClick} from "../BoxInfo/BoxInfo"
 
 
+function BoxInput() {
 
-function SearchBar() {
+    const [showConditionOneText, setShowConditionOneText] = useState(false)
 
-    function boxC() {
-        return <p>Me mama</p>
-    }
-
+    const handleClick = () =>
+        setShowConditionOneText(showConditionOneText => !showConditionOneText)
 
     return(
         <div>
@@ -36,14 +36,17 @@ function SearchBar() {
                         placeholder="Brasilia"
                         className={"imp-01"}
                     />
-                    <Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
+                    <Button className={"bt-01"} onClick={handleClick}>Submit</Button>
                 </FormGroup>
             </Form>
-            <div className="div-02"></div>
+            {showConditionOneText ? ('') : (<div>
+
+                <h1>O texto deve estar aqui meu nobre :)</h1>
+                <h2>Fala pro bajira para de jogar crypto conflicts</h2>
+
+            </div>)}
         </div>
     );
 }
 
-
-
-export default SearchBar;
+export default BoxInput;

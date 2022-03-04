@@ -1,5 +1,4 @@
 .FormCss {
-    display:flex;
     background: white;
     margin-left: -500px;
     margin-right: 450px;
@@ -7,6 +6,7 @@
     border-radius: 30px;
     width: 200%;
     align-items: center;
+    display:flex;
 }
 
 .bt-01 {

@@ -1,11 +1,12 @@
 import React from "react";
 import './App.css';
-import SearchBar from "./Components/SearchBar";
+import HomePage from './Pages/HomePage'
+
 
 function App() {
     return (
         <div className="App">
-            <SearchBar placeholder="Digite uma cidade"/>
+            <HomePage placeholder="Digite uma cidade"/>
         </div>
     );
 }
