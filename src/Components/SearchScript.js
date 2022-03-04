@@ -1,40 +1,39 @@
 import axios from "axios";
 import './SearchBar'
 
-export function GetUserCiy(localTemperature, isDayTime, dateTime, icon) {
+export function GetUserCiy() {
     let information = document.getElementById("input-city").value;
-    if(information) {
+    if (information) {
 
 
-        async function idQuery() {
+        async function apiCalls() {
 
-            const API_KEY = "UDbfVDhLCwO5iPDrK8KqXdW6KSmUxvaf";
-            const UserInput = information;
-            let res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${UserInput}`);
-
-            let inform = res.data[0].Key
+            const API_KEY = "U6DZXZvrOo05Z1ExG9ueYusnSZeLrv9b";
 
 
-            let response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${inform}?apikey=${API_KEY}`);
+            let res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${API_KEY}&q=${information}`);
+            const cityId = res.data[0].Key
 
-            let fullData = response.data;
-            let localTemperature = response.data[0].Temperature.Metric.Value
-            let isDayTime = response.data[0].IsDayTime
-            let dateTime = response.data[0].LocalObservationDateTime
-            let icon = response.data[0].WeatherIcon
 
+            let response = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${API_KEY}`);
+            const fullData = response.data;
+            const localTemperature = response.data[0].Temperature.Metric.Value;
+            const isDayTime = response.data[0].IsDayTime;
+            const dateTime = response.data[0].LocalObservationDateTime;
+            const icon = response.data[0].WeatherIcon;
+            const iconURL = "https://www.accuweather.com/images/weathericons/" + icon + ".svg";
 
             console.log(fullData)
             console.log(localTemperature)
-            console.log(isDayTime)
             console.log(dateTime)
             console.log(icon)
-
+            console.log(iconURL)
+            console.log(isDayTime)
 
         };
-        idQuery();
+        apiCalls();
+
+
     }
 };
-
-
 

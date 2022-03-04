@@ -1,19 +1,19 @@
-import React, {useState} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    Button,
-    Form,
-    FormGroup,
-    Input,
-    Label,
-} from 'reactstrap';
-import './SearchScript'
-import {GetUserCiy} from "./SearchScript";
+/*import React from "react";
+import ReactDOM from "react-dom";
 
-function SearchBar() {
+function App() {
+    return (
+        <img
+            src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+            alt="new"
+        />
+    );
+}
 
-    return(
-        <div>
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+       /*<div>
             <Form className={"FormCss"}>
                 <FormGroup>
                     <Label className={"lb-01"} for="nome">Digite sua cidade</Label>
@@ -27,17 +27,9 @@ function SearchBar() {
                         placeholder="Ex: Fortaleza, Sao Paulo"
                         className={"imp-01"}
                     />
-                    <Button className={"bt-01"} type="submit"}>Submit</Button>
+                    <Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
                 </FormGroup>
             </Form>
             <div className="div-02">
             </div>
-        </div>
-
-    );
-}
-
-
-
-export default SearchBar;
-//<Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
+ */
