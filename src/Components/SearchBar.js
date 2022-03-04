@@ -27,11 +27,9 @@ function SearchBar() {
                         placeholder="Ex: Fortaleza, Sao Paulo"
                         className={"imp-01"}
                     />
-                    <Button className={"bt-01"} type="submit"}>Submit</Button>
+                    <Button className={"bt-01"} onClick={GetUserCiy}>Submit</Button>
                 </FormGroup>
             </Form>
-            <div className="div-02">
-            </div>
         </div>
 
     );
