@@ -20,8 +20,7 @@ const BoxInput = () => {
     const [localizedName, setLocalizedName] = useState();
 
     const apiURL = "http://dataservice.accuweather.com";
-    const apikey = "CC4Zp7rFaDVpDOrtIVTFkAZhfPVT7Nca";
-
+    const apikey = "YCvJYwQiW9BIu2zKBQuEbx0Mx1MSXUCG";
 
 
     const handleInput = (entrada) => {
@@ -48,6 +47,8 @@ const BoxInput = () => {
                 setError(null);
 
 
+
+
             } catch (error) {
                 setError(error.message);
                 setInfo(null);
@@ -68,8 +69,9 @@ const BoxInput = () => {
                                 color: 'black',
                             }}
                             onChange={handleInput}
+                            onClick={handleSubmit}
                             id="input-city"
-                            type="message"
+                            type="text"
                             placeholder="Digite o nome de alguma cidade. ex: Brasilia, Fortaleza, Natal"
                             className={"imp-01"}
                         />
@@ -92,6 +94,8 @@ const BoxInput = () => {
                     <div className='box-temp'>
                         <p className={"emoji"}></p>
                         <p className={"Temperature"}>{info[0].Temperature.Metric.Value} °C</p>
+                        <img className="iconImg" src={`https://www.accuweather.com/images/weathericons/${info[0].WeatherIcon}.svg`}></img>
+                        <p className="condition">{info[0].WeatherText}</p>
                     </div>
                     <div></div>
                 </div>
