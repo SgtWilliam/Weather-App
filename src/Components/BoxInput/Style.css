@@ -1,32 +1,87 @@
+@media(max-width: 720px) {
+
+}
+
+
 .FormCss {
+    position: relative;
     background: white;
-    margin-left: -500px;
-    margin-right: 450px;
-    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-top: 20px;
     border-radius: 30px;
-    width: 200%;
     align-items: center;
-    display:flex;
+    display: flex;
+    height: 150px;
+    width: 160vh;
+    flex: 1;
 }
 
 .bt-01 {
-    display: table-column;
-    left:100%;
-    align: center;
-    position: relative;
+    display: flex;
+    left: 62.4%;
     top: 10px;
     background-color: #8820dd;
+    width: 200px;
+    flex: 1;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .lb-01 {
     color: black;
     display: flex;
     position: relative;
-    left: 15%;
+    left: 70%;
     font-size: 20px;
+    font-weight: bold;
+    flex: 1;
 }
 
 .imp-01 {
-    position:relative;
-    left:25%;
+    right: 0px;
+    left: 150px;
+    width: 110vh;
+    height: 45px;
+    flex: 1;
+    display: inline;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.Box-Infos {
+    position: relative;
+    margin-top: 10px;
+    display:flex;
+    background: white;
+    border-radius: 20px;
+    height: 100px;
+    flex: 1;
+}
+
+.cityName {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30px;
+    flex: 1;
+}
+
+
+.Temperature {
+    position: relative;
+    margin-top: 26.5px;
+    flex: 1;
+    font-size: 30px;
+    margin-right: 110vh;
+}
+
+.emoji {
+    size: 30px;
+    width: 30px;
+
 }
