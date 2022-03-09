@@ -1,66 +1,45 @@
 import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    Button,
-    Form,
-    FormGroup,
-    Input,
-    Label,
-    FormText,
-} from 'reactstrap';
+import {Button, Form, FormGroup, Input, Label,} from 'reactstrap';
 import './Style.css';
-
+import WeatherRepository from "../../Repository/WeatherRepository";
 
 
 const BoxInput = () => {
 
-    const [city, setCity] = useState("");
-    const [info, setInfo] = useState();
+    const [cityName, setCityName] = useState("");
+    const [currentConditions, setCurrentConditions] = useState();
     const [error, setError] = useState();
     const [localizedName, setLocalizedName] = useState();
 
-    const apiURL = "http://dataservice.accuweather.com";
-    const apikey = "YCvJYwQiW9BIu2zKBQuEbx0Mx1MSXUCG";
-
-
     const handleInput = (entrada) => {
-        setCity(entrada.target.value);
+        setCityName(entrada.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const getCurrentConditions = async (e) => {
         e.preventDefault();
-        if (city === "") return;
-        else {
-            try {
-                const response = await fetch(
-                    `${apiURL}/locations/v1/cities/search?apikey=%20${apikey}&q=${city}`
-                );
-                const data = await response.json();
-
-                const cityKey = data[0].Key;
-                setLocalizedName(data[0].EnglishName);
-                const response2 = await fetch(
-                    `${apiURL}/currentconditions/v1/${cityKey}?apikey=${apikey}`
-                );
-                const data2 = await response2.json();
-                setInfo(data2);
-                setError(null);
-
-
-
-
-            } catch (error) {
-                setError(error.message);
-                setInfo(null);
-            }
+        if (cityName === "") {
+            return
         }
+
+        try {
+            const currentConditions = await WeatherRepository.getCurrentConditionsFromCityName(cityName)
+            setLocalizedName(currentConditions.englishCityName)
+            setCurrentConditions(currentConditions);
+            setError(null);
+
+        } catch (error) {
+            setError(error.message);
+            setCurrentConditions(null);
+        }
+
     };
 
 
-    return(
+    return (
         <div>
             <div>
-                <Form className={"FormCss"}>
+                <Form className={"FormCss"} onSubmit={getCurrentConditions}>
                     <FormGroup>
                         <Label className={"lb-01"} for="nome">Cidade</Label>
                         <Input
@@ -69,13 +48,12 @@ const BoxInput = () => {
                                 color: 'black',
                             }}
                             onChange={handleInput}
-                            onClick={handleSubmit}
                             id="input-city"
                             type="text"
                             placeholder="Digite o nome de alguma cidade. ex: Brasilia, Fortaleza, Natal"
                             className={"imp-01"}
                         />
-                        <Button className={"bt-01"} onClick={handleSubmit}>Submit</Button>
+                        <Button className={"bt-01"} type={"submit"}>Submit</Button>
                     </FormGroup>
                 </Form>
             </div>
@@ -88,24 +66,23 @@ const BoxInput = () => {
             )}
 
 
-            {info && (
+            {currentConditions && (
                 <div className="Box-Infos">
                     <h2 className={"cityName"}>{localizedName}</h2>
                     <div className='box-temp'>
-                        <p className={"emoji"}></p>
-                        <p className={"Temperature"}>{info[0].Temperature.Metric.Value} °C</p>
-                        <img className="iconImg" src={`https://www.accuweather.com/images/weathericons/${info[0].WeatherIcon}.svg`}></img>
-                        <p className="condition">{info[0].WeatherText}</p>
+                        <p className={"emoji"}/>
+                        <p className={"Temperature"}>{currentConditions.temperature.Metric.Value} °C</p>
+                        <img className="iconImg"
+                             src={`https://www.accuweather.com/images/weathericons/${currentConditions.weatherIcon}.svg`}/>
+                        <p className="condition">{currentConditions.weatherText}</p>
                     </div>
-                    <div></div>
+                    <div/>
                 </div>
             )}
 
         </div>
     );
 };
-
-
 
 
 export default BoxInput;
